@@ -15,6 +15,7 @@ repositories {
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+	/*web 라이브러리를 사용하는데 필요한 라이브러리(의존관계인)들을 자동적으로 가져옴*/
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
