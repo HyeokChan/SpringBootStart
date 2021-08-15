@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class HelloController {
@@ -22,5 +23,29 @@ public class HelloController {
         return "hello-template";
     }
 
+    /*@ResponseBody : http body 부분에 데이터를 직접 넣어주겠다.*/
+    @GetMapping("hello-string")
+    @ResponseBody
+    public String helloString(@RequestParam("name") String name){
+        return "hello " + name;
+    }
 
+    /*API 방식 : 객체를 JSON 형태로 반환*/
+    @GetMapping("hello-api")
+    @ResponseBody
+    public Hello helloApi(@RequestParam("name") String name){
+        Hello hello = new Hello();
+        hello.setName(name);
+        return hello;
+    }
+    /*static : 클래스 내부에서 객체를 만들기 위한 클래스 생성*/
+    static class Hello{
+        private String name;
+        public String getName() {
+            return name;
+        }
+        public void setName(String name) {
+            this.name = name;
+        }
+    }
 }
