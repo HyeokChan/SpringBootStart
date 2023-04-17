@@ -23,14 +23,14 @@ public class HelloController {
         return "hello-template";
     }
 
-    /*@ResponseBody : http body 부분에 데이터를 직접 넣어주겠다.*/
+    /*@ResponseBody : http body 부분에 데이터를 직접 넣어주겠다. StringConverter 작동*/
     @GetMapping("hello-string")
     @ResponseBody
     public String helloString(@RequestParam("name") String name){
         return "hello " + name;
     }
 
-    /*API 방식 : 객체를 JSON 형태로 반환*/
+    /*API 방식 : 객체를 JSON 형태로 반환. JsonConverter 작동*/
     @GetMapping("hello-api")
     @ResponseBody
     public Hello helloApi(@RequestParam("name") String name){
